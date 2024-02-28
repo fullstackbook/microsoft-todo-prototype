@@ -1,6 +1,7 @@
 import { CheckboxIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { ModeToggle } from "./mode-toggle";
+import AvatarMenu from "./avatar-menu";
 
 export default function Header() {
   return (
@@ -8,8 +9,9 @@ export default function Header() {
       <Link href="/">
         <CheckboxIcon className="h-8 w-8" />
       </Link>
-      <div>
+      <div className="flex gap-5">
         <ModeToggle />
+        <AvatarMenu />
       </div>
     </div>
   );
