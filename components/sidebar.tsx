@@ -1,7 +1,7 @@
 import { HomeIcon, StarIcon, SunIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
-export default function Sidebar() {
+export default function Sidebar({ onClick }: { onClick: Function }) {
   return (
     <div className="p-5">
       <ul className="flex flex-col gap-5">
@@ -9,6 +9,7 @@ export default function Sidebar() {
           <Link
             href="/myday"
             className="flex gap-2 items-center justify-between"
+            onClick={() => onClick()}
           >
             <div className="flex gap-5">
               <SunIcon className="w-6 h-6 text-accent-green-foreground" /> My
@@ -21,6 +22,7 @@ export default function Sidebar() {
           <Link
             href="/important"
             className="flex gap-2 items-center justify-between"
+            onClick={() => onClick()}
           >
             <div className="flex gap-5">
               <StarIcon className="w-6 h-6 text-accent-pink-foreground" />{" "}
@@ -33,6 +35,7 @@ export default function Sidebar() {
           <Link
             href="/tasks"
             className="flex gap-2 items-center justify-between"
+            onClick={() => onClick()}
           >
             <div className="flex gap-5">
               <HomeIcon className="w-6 h-6 text-accent-blue-foreground" /> Tasks
