@@ -1,3 +1,4 @@
+import AppShell from "@/components/app-shell";
 import { auth } from "@/lib/auth";
 import { SessionProvider } from "next-auth/react";
 import { redirect } from "next/navigation";
@@ -12,7 +13,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
 
   return (
     <SessionProvider session={session}>
-      <div>{children}</div>
+      <AppShell>{children}</AppShell>
     </SessionProvider>
   );
 }
