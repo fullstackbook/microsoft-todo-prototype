@@ -10,7 +10,6 @@ export default async function Home() {
   return (
     <div className="flex h-screen w-screen justify-center items-center">
       <div className="flex flex-col gap-5 text-center">
-        <ModeToggle />
         <h1>Microsoft To Do Prototype</h1>
         <div>
           {session ? (
