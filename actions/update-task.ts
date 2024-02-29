@@ -18,6 +18,7 @@ export async function updateTask(id: number, data: any) {
     title: data.title,
     note: data.note,
     isImportant: data.isImportant,
+    addedToMyDayAt: data.addedToMyDayAt,
   };
 
   await db

@@ -3,6 +3,7 @@
 import { Task } from "@/types/task";
 import { Checkbox } from "./ui/checkbox";
 import completeTask from "@/actions/complete-task";
+import { format } from "date-fns";
 
 import {
   Drawer,
@@ -52,6 +53,20 @@ export default function TaskList({ tasks, accentClassName }: Props) {
     await updateTask(task.id, data);
   }
 
+  async function handleRemoveFromMyDay(task: Task) {
+    const data = {
+      addedToMyDayAt: null,
+    };
+    await updateTask(task.id, data);
+  }
+
+  async function handleAddToMyDay(task: Task) {
+    const data = {
+      addedToMyDayAt: new Date().toISOString(),
+    };
+    await updateTask(task.id, data);
+  }
+
   return (
     <div>
       {tasks.map((task) => (
@@ -92,6 +107,16 @@ export default function TaskList({ tasks, accentClassName }: Props) {
                     defaultValue={task.note ?? ""}
                     onChange={(e) => updateNote(task, e.target.value)}
                   />
+                  {task.addedToMyDayAt &&
+                  task.addedToMyDayAt > format(new Date(), "yyyy-MM-dd") ? (
+                    <Button onClick={() => handleRemoveFromMyDay(task)}>
+                      Remove from My Day
+                    </Button>
+                  ) : (
+                    <Button onClick={() => handleAddToMyDay(task)}>
+                      Add to My Day
+                    </Button>
+                  )}
                 </div>
               </DrawerContent>
             </Drawer>
