@@ -6,7 +6,7 @@ import { tasks } from "@/lib/schema";
 import { and, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
-export default async function completeTask(id: number) {
+export default async function completeTask(id: number, isComplete: boolean) {
   const session = await auth();
 
   if (!session) {
@@ -18,7 +18,7 @@ export default async function completeTask(id: number) {
   await db
     .update(tasks)
     .set({
-      isComplete: true,
+      isComplete: isComplete,
     })
     .where(and(eq(tasks.id, id), eq(tasks.userId, session.user.id)));
 

@@ -10,7 +10,7 @@ type Props = {
 
 export default function TaskList({ tasks }: Props) {
   async function checkTask(task: Task) {
-    await completeTask(task.id);
+    await completeTask(task.id, !task.isComplete);
   }
 
   return (
@@ -21,7 +21,10 @@ export default function TaskList({ tasks }: Props) {
           className="bg-accent mb-0.5 rounded text-foreground flex items-center"
         >
           <div className="p-3">
-            <Checkbox onClick={() => checkTask(task)} />
+            <Checkbox
+              checked={task.isComplete ? true : false}
+              onClick={() => checkTask(task)}
+            />
           </div>
           <div>{task.title}</div>
         </div>
