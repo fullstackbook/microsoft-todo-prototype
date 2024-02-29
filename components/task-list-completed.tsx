@@ -20,16 +20,22 @@ export default function TaskListCompleted(props: Props) {
       {open ? (
         <div className="flex flex-col gap-5">
           <div>
-            <Button onClick={() => setOpen(!open)}>
-              <ChevronDownIcon /> Completed
+            <Button
+              className="bg-accent text-accent-foreground hover:bg-accent/50"
+              onClick={() => setOpen(!open)}
+            >
+              <ChevronDownIcon className="mr-2" /> Completed
             </Button>
           </div>
           <TaskList tasks={tasks} />
         </div>
       ) : (
         <div>
-          <Button onClick={() => setOpen(!open)}>
-            <ChevronRightIcon /> Completed
+          <Button
+            className="bg-accent text-accent-foreground hover:bg-accent/50"
+            onClick={() => setOpen(!open)}
+          >
+            <ChevronRightIcon className="mr-2" /> Completed
           </Button>
         </div>
       )}
