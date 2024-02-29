@@ -1,5 +1,6 @@
 import AddTask from "@/components/add-task";
 import TaskList from "@/components/task-list";
+import TaskListCompleted from "@/components/task-list-completed";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { tasks } from "@/lib/schema";
@@ -32,7 +33,7 @@ export default async function Page() {
         </div>
       )}
       <div>
-        <TaskList tasks={resCompleted} />
+        <TaskListCompleted tasks={resCompleted} />
       </div>
       <div>
         <AddTask />
