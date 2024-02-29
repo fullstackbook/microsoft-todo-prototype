@@ -27,7 +27,10 @@ export default function TaskListCompleted(props: Props) {
               <ChevronDownIcon className="mr-2" /> Completed
             </Button>
           </div>
-          <TaskList tasks={tasks} />
+          <TaskList
+            tasks={tasks}
+            accentClassName="text-accent-blue-foreground"
+          />
         </div>
       ) : (
         <div>

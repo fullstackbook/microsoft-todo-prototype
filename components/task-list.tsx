@@ -67,7 +67,12 @@ export default function TaskList({ tasks, accentClassName }: Props) {
           </div>
           <div className="flex-auto">
             <Drawer>
-              <DrawerTrigger className="w-full text-left p-3">
+              <DrawerTrigger
+                className={cn(
+                  "w-full text-left p-3",
+                  task.isComplete && "line-through text-muted-foreground"
+                )}
+              >
                 {task.title}
               </DrawerTrigger>
               <DrawerContent>
