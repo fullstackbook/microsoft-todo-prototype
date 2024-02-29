@@ -80,7 +80,8 @@ export const {
     }),
   ],
   callbacks: {
-    async session({ session, user, token }) {
+    async session({ session, user, token }: any) {
+      session.user.id = token.sub;
       return session;
     },
   },

@@ -5,6 +5,7 @@ import {
   primaryKey,
 } from "drizzle-orm/sqlite-core";
 import type { AdapterAccount } from "@auth/core/adapters";
+import { sql } from "drizzle-orm";
 
 export const users = sqliteTable("user", {
   id: text("id").notNull().primaryKey(),
@@ -58,3 +59,16 @@ export const verificationTokens = sqliteTable(
     compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   })
 );
+
+export const tasks = sqliteTable("tasks", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  userId: text("userId")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  title: text("title"),
+  note: text("note"),
+  isComplete: integer("is_complete", { mode: "boolean" }).default(false),
+  createdAt: text("created_at").default(sql`CURRENT_DATE`),
+  addedToMyDayAt: text("added_to_my_day_at"),
+  isImportant: integer("is_important", { mode: "boolean" }),
+});
