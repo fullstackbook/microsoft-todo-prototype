@@ -6,7 +6,12 @@ import { Button } from "./ui/button";
 import { PlusIcon } from "@radix-ui/react-icons";
 import { createTask } from "@/actions/create-task";
 
-export default function AddTask() {
+type Props = {
+  className: string;
+};
+
+export default function AddTask(props: Props) {
+  const { className } = props;
   const [isAdding, setIsAdding] = useState(false);
   const [title, setTitle] = useState("");
 
@@ -27,9 +32,10 @@ export default function AddTask() {
           onKeyDown={handleKeyDown}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          onBlur={() => setIsAdding(false)}
         />
       ) : (
-        <Button onClick={() => setIsAdding(true)}>
+        <Button className={className} onClick={() => setIsAdding(true)}>
           <PlusIcon /> Add Task
         </Button>
       )}

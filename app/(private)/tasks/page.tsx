@@ -21,7 +21,7 @@ export default async function Page() {
   });
 
   return (
-    <div className="flex flex-col text-accent-blue-foreground p-5">
+    <div className="flex flex-col text-accent-blue-foreground p-5 gap-5">
       <h1 className="font-bold text-3xl">Tasks</h1>
       {res.length > 0 ? (
         <div>
@@ -36,7 +36,7 @@ export default async function Page() {
         <TaskListCompleted tasks={resCompleted} />
       </div>
       <div>
-        <AddTask />
+        <AddTask className="text-accent-blue-foreground bg-accent hover:bg-accent/50" />
       </div>
     </div>
   );
