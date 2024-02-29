@@ -7,8 +7,15 @@ import { Button } from "./ui/button";
 import { ChevronLeftIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { TaskCounts } from "@/types/task-counts";
 
-export default function AppShell({ children }: { children: ReactNode }) {
+export default function AppShell({
+  children,
+  taskCounts,
+}: {
+  children: ReactNode;
+  taskCounts: TaskCounts;
+}) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -23,7 +30,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
           open && "translate-x-0"
         )}
       >
-        <Sidebar onClick={() => setOpen(false)} />
+        <Sidebar taskCounts={taskCounts} onClick={() => setOpen(false)} />
       </div>
       <div className="sm:hidden mt-5">
         <Button
