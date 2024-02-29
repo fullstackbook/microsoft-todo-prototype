@@ -17,6 +17,8 @@ import {
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { updateTask } from "@/actions/update-task";
+import { Button } from "./ui/button";
+import { StarFilledIcon, StarIcon } from "@radix-ui/react-icons";
 
 type Props = {
   tasks: Task[];
@@ -37,6 +39,13 @@ export default function TaskList({ tasks }: Props) {
   async function updateNote(task: Task, note: string) {
     const data = {
       note: note,
+    };
+    await updateTask(task.id, data);
+  }
+
+  async function toggleImportant(task: Task) {
+    const data = {
+      isImportant: !task.isImportant,
     };
     await updateTask(task.id, data);
   }
@@ -80,6 +89,13 @@ export default function TaskList({ tasks }: Props) {
               </DrawerContent>
             </Drawer>
           </div>
+          <Button variant="ghost" onClick={() => toggleImportant(task)}>
+            {task.isImportant ? (
+              <StarFilledIcon className="w-6 h-6" />
+            ) : (
+              <StarIcon className="w-6 h-6" />
+            )}
+          </Button>
         </div>
       ))}
     </div>

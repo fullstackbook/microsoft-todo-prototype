@@ -17,6 +17,7 @@ export async function updateTask(id: number, data: any) {
   const update = {
     title: data.title,
     note: data.note,
+    isImportant: data.isImportant,
   };
 
   await db
