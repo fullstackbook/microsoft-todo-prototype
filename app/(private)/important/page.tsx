@@ -36,7 +36,10 @@ export default async function Page() {
         <div>Try starring some tasks to see them here...</div>
       )}
       <div>
-        <TaskListCompleted tasks={resCompleted} />
+        <TaskListCompleted
+          tasks={resCompleted}
+          accentClassName="text-accent-pink-foreground"
+        />
       </div>
       <div>
         <AddTask

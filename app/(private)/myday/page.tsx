@@ -40,7 +40,10 @@ export default async function Page() {
         <div>Tasks for today</div>
       )}
       <div>
-        <TaskListCompleted tasks={resCompleted} />
+        <TaskListCompleted
+          tasks={resCompleted}
+          accentClassName="text-accent-green-foreground"
+        />
       </div>
       <div>
         <AddTask
