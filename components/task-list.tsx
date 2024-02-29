@@ -19,7 +19,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { updateTask } from "@/actions/update-task";
 import { Button } from "./ui/button";
-import { StarFilledIcon, StarIcon } from "@radix-ui/react-icons";
+import { StarFilledIcon, StarIcon, SunIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -109,12 +109,24 @@ export default function TaskList({ tasks, accentClassName }: Props) {
                   />
                   {task.addedToMyDayAt &&
                   task.addedToMyDayAt > format(new Date(), "yyyy-MM-dd") ? (
-                    <Button onClick={() => handleRemoveFromMyDay(task)}>
-                      Remove from My Day
+                    <Button
+                      className={cn(
+                        "bg-accent hover:bg-accent/50",
+                        accentClassName
+                      )}
+                      onClick={() => handleRemoveFromMyDay(task)}
+                    >
+                      <SunIcon className="mr-2 w-6 h-6" /> Remove from My Day
                     </Button>
                   ) : (
-                    <Button onClick={() => handleAddToMyDay(task)}>
-                      Add to My Day
+                    <Button
+                      className={cn(
+                        "bg-accent hover:bg-accent/50",
+                        accentClassName
+                      )}
+                      onClick={() => handleAddToMyDay(task)}
+                    >
+                      <SunIcon className="mr-2 w-6 h-6" /> Add to My Day
                     </Button>
                   )}
                 </div>
