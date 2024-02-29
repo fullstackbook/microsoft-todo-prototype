@@ -19,12 +19,14 @@ import { Textarea } from "./ui/textarea";
 import { updateTask } from "@/actions/update-task";
 import { Button } from "./ui/button";
 import { StarFilledIcon, StarIcon } from "@radix-ui/react-icons";
+import { cn } from "@/lib/utils";
 
 type Props = {
   tasks: Task[];
+  accentClassName: string;
 };
 
-export default function TaskList({ tasks }: Props) {
+export default function TaskList({ tasks, accentClassName }: Props) {
   async function checkTask(task: Task) {
     await completeTask(task.id, !task.isComplete);
   }
@@ -89,7 +91,11 @@ export default function TaskList({ tasks }: Props) {
               </DrawerContent>
             </Drawer>
           </div>
-          <Button variant="ghost" onClick={() => toggleImportant(task)}>
+          <Button
+            className={cn(accentClassName, `hover:${accentClassName}`)}
+            variant="ghost"
+            onClick={() => toggleImportant(task)}
+          >
             {task.isImportant ? (
               <StarFilledIcon className="w-6 h-6" />
             ) : (

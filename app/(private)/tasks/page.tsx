@@ -25,7 +25,7 @@ export default async function Page() {
       <h1 className="font-bold text-3xl">Tasks</h1>
       {res.length > 0 ? (
         <div>
-          <TaskList tasks={res} />
+          <TaskList tasks={res} accentClassName="text-accent-blue-foreground" />
         </div>
       ) : (
         <div>
