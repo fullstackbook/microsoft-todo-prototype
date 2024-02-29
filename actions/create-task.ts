@@ -5,16 +5,18 @@ import { db } from "@/lib/db";
 import { tasks } from "@/lib/schema";
 import { revalidatePath } from "next/cache";
 
-export async function createTask(title: string) {
+export async function createTask(data: any) {
   const session = await auth();
   if (!session) {
     return {
       message: "unauthenticated",
     };
   }
-  await db.insert(tasks).values({
+  const dataToInsert = {
     userId: session.user.id,
-    title: title,
-  });
+    title: data.title,
+    isImportant: data.isImportant,
+  };
+  await db.insert(tasks).values(dataToInsert);
   revalidatePath("/tasks");
 }

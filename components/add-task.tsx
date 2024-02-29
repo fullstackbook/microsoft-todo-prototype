@@ -8,16 +8,21 @@ import { createTask } from "@/actions/create-task";
 
 type Props = {
   className: string;
+  isImportant?: boolean;
 };
 
 export default function AddTask(props: Props) {
-  const { className } = props;
+  const { className, isImportant } = props;
   const [isAdding, setIsAdding] = useState(false);
   const [title, setTitle] = useState("");
 
   async function handleKeyDown(e: KeyboardEvent) {
     if (e.key === "Enter") {
-      await createTask(title);
+      const data = {
+        title: title,
+        isImportant: isImportant,
+      };
+      await createTask(data);
       setTitle("");
     }
   }
