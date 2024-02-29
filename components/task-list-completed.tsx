@@ -24,7 +24,7 @@ export default function TaskListCompleted(props: Props) {
               className="bg-accent text-accent-foreground hover:bg-accent/50"
               onClick={() => setOpen(!open)}
             >
-              <ChevronDownIcon className="mr-2" /> Completed
+              <ChevronDownIcon className="mr-2" /> Completed {tasks.length}
             </Button>
           </div>
           <TaskList
@@ -38,7 +38,7 @@ export default function TaskListCompleted(props: Props) {
             className="bg-accent text-accent-foreground hover:bg-accent/50"
             onClick={() => setOpen(!open)}
           >
-            <ChevronRightIcon className="mr-2" /> Completed
+            <ChevronRightIcon className="mr-2" /> Completed {tasks.length}
           </Button>
         </div>
       )}
